@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { loadDatabaseFromCSV } from './db';
 import { searchPeople } from './utils/search';
+import './style.css'
 
 function App() {
   const [rows, setRows] = useState([]);

@@ -1,0 +1,26 @@
+div{
+    background-color:white ;
+    
+}
+h1{
+    padding-left: 500px;
+    color: pink;
+}
+
+input{
+    margin-left: 57%;
+
+    background-color: pink;
+
+}
+
+table{
+    margin-left: 47.5%;
+    background-color: rgb(255, 255, 255);
+}
+td{
+    text-align: center;
+}
+table, th, td{
+    border: 2px solid pink;
+}
