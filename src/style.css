@@ -18,9 +18,14 @@ input{
 table{
     margin-left: 47.5%;
     background-color: rgb(255, 255, 255);
+    font-family: 'Times New Roman', Times, serif;
+    
+
 }
 td{
     text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+
 }
 table, th, td{
     border: 2px solid pink;
