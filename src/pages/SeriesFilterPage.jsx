@@ -10,7 +10,6 @@ import family1 from "../assets/images/family1.jpg";
 import hah from "../assets/images/hah.jpg";
 import hs from "../assets/images/hs.jpg";
 import superaction from "../assets/images/superaction.jpg";
-import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 export default function SeriesFilterPage() {
   const API = "http://localhost:8585/series";
