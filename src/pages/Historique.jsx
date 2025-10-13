@@ -10,6 +10,7 @@ import family1 from "../assets/images/family1.jpg";
 import hah from "../assets/images/hah.jpg";
 import hs from "../assets/images/hs.jpg";
 import superaction from "../assets/images/superaction.jpg";
+import Navbar from "./Navbar";
 
 export default function HistoriquePage() {
   const API = "http://localhost:8585/persons";
@@ -31,7 +32,7 @@ export default function HistoriquePage() {
     "High School": hs,
     "Super Action": superaction,
   };
-// Récupération des utilisateurs au chargement du composant
+  // Récupération des utilisateurs au chargement du composant
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -43,7 +44,7 @@ export default function HistoriquePage() {
     };
     fetchUsers();
   }, []);
-// Chargement de l'historique d'un utilisateur sélectionné
+  // Chargement de l'historique d'un utilisateur sélectionné
   const loadHistory = async (id) => {
     try {
       const res = await axios.get(`${API}/${id}/history`);
@@ -53,29 +54,19 @@ export default function HistoriquePage() {
       setErrorMsg("Impossible de charger l'historique.");
     }
   };
-// Filtrage des utilisateurs en fonction de la recherche
+  // Filtrage des utilisateurs en fonction de la recherche
   const filteredUsers = users.filter(
     (u) =>
       u.name?.toLowerCase().includes(search.toLowerCase()) ||
       u.email?.toLowerCase().includes(search.toLowerCase())
   );
-// Rendu du composant HistoriquePage et navigation
+  // Rendu du composant HistoriquePage et navigation
   return (
     <div className="series-page">
-      <header className="navbar">
-        <div className="navbar-left">
-          <h1 style={{ color: 'Red'}} className="logo">Series</h1>
-          <nav className="nav-links">
-            <a href="/">Accueil</a>
-            <a href="/series">Séries</a>
-            <a href="/historique">Historique</a>
-            <a href="recommandation">Recommandation</a>
-     
-          </nav>
-        </div>
-      </header>
+      <Navbar />
 
-      <h2 style={{ color: 'Red',  font: 'Arial Black'}}>Historique des utilisateurs</h2>
+
+      <h2 style={{ color: 'Red', font: 'Arial Black' }}>Historique des utilisateurs</h2>
 
       <input
         type="text"

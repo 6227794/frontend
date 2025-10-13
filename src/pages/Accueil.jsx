@@ -2,26 +2,18 @@ import "../css/Accueil.css";
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { filmsPopulaires, seriesSuspense, comedies } from "../data/data";
-
+import { Link } from "react-router-dom";
+import Navbar from '../pages/Navbar';
 import breaking from "../assets/images/breaking.jpg";
 
 export default function Accueil() {
+
   const [isOpenVideo, setIsOpenVide] = useState(false);
 
   // Composant Accueil avec navigation, sections de contenu et  vidéo
   return (
     <div className="accueil-container">
-      <header className="navbar">
-        <div className="navbar-left">
-          <h1 style={{ color: 'red' }} className="logo">Series</h1>
-          <nav className="nav-links">
-            <a href="/">Accueil</a>
-            <a href="/series">Séries</a>
-            <a href="/historique">Historique</a>
-            <a href="recommandation">Recommandation</a>
-          </nav>
-        </div>
-      </header>
+      <Navbar />
       <main className="main-content">
         <h2 style={{ fontFamily: 'Arial Black' }}>Bienvenue sur Series</h2>
         <p style={{ color: 'Red', fontFamily: 'Arial Black' }}>Découvrez vos films et séries préférés!</p>
