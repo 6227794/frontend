@@ -60,7 +60,7 @@ export default function Tendances() {
                         {trending.map((serie) => (
                             <li key={serie.id}>
                                 <strong>{serie.title}</strong> <br />
-                                {serie.views7d} vues <br />
+                                {serie.views} vues <br />
                                 Note moyenne : {serie.avgRating} <br />
                                 Score : {serie.score}
                             </li>
