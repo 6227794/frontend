@@ -9,6 +9,7 @@ import Evaluations from "./pages/Evaluations";
 import PrivateRoute from "./pages/PrivateRoute";
 import CreationCompte from "./pages/CreationCompte";
 import Page404 from "./pages/Page404";
+import Tendances from "./pages/Tendances";
 function App() {
   return (
     <Router>
@@ -18,8 +19,10 @@ function App() {
           <Route path="/series" element={<SeriesFilterPage />} />
           <Route path="/historique" element={<Historique />} />
           <Route path="/recommandation" element={<Recommandation />} />
+          <Route path="/tendance" element={<Tendances />} />
           <Route path="/connexion" element={<Connexion />} />
           <Route path="/creationCompte" element={<CreationCompte />} />
+
           <Route path="/evaluation" element={<PrivateRoute><Evaluations /></PrivateRoute>} />
           <Route path="*" element={<Page404 />} />
         </Routes>

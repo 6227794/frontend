@@ -1,0 +1,81 @@
+.tendances-page {
+  background-color: #000;
+  min-height: 100vh;
+  color: #ccc;
+  padding: 40px 20px;
+  font-family: "Arial", sans-serif;
+}
+
+.tendances-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.tendances-content h1 {
+  color: #610808;
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  text-align: center;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.tendances-content p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+li {
+  background-color: #111;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border-left: 5px solid #630e0e;
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  background-color: #1a1a1a;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+}
+
+li strong {
+  font-size: 1.2rem;
+  color: #ff5555;
+}
+
+li span {
+  display: block;
+  margin-top: 6px;
+  color: #aaa;
+}
+
+.error-msg {
+  color: #ff5555;
+  font-weight: bold;
+  margin-top: 15px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .tendances-content {
+    padding: 20px;
+  }
+
+  li {
+    padding: 15px;
+  }
+
+  .tendances-content h1 {
+    font-size: 1.8rem;
+  }
+}

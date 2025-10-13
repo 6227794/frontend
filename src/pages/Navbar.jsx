@@ -24,6 +24,7 @@ export default function Navbar() {
           <Link to="/historique">Historique</Link>
           <Link to="/recommandation">Recommandation</Link>
           {isLogged && <Link to="/evaluation">Évaluation</Link>}
+          {isLogged && <Link to="/tendance">Tendances</Link>}
           {!isLogged && <Link to="/connexion">Connexion</Link>}
         </nav>
       </div>
