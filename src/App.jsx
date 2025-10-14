@@ -1,70 +1,36 @@
-import { useEffect, useState } from 'react';
-import { loadDatabaseFromCSV } from './db';
-import { searchPeople } from './utils/search';
-import './style.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Accueil from "./pages/Accueil";
+import Footer from "./pages/Footer";
+import SeriesFilterPage from "./pages/SeriesFilterPage";
+import Historique from "./pages/Historique";
+import Recommandation from "./pages/Recommandation";
+import Connexion from "./pages/Connexion";
+import Evaluations from "./pages/Evaluations";
+import PrivateRoute from "./pages/PrivateRoute";
+import CreationCompte from "./pages/CreationCompte";
+import Page404 from "./pages/Page404";
+import Tendances from "./pages/Tendances";
 
 function App() {
-  const [rows, setRows] = useState([]);
-  const [query, setQuery] = useState('');
-  const [db, setDb] = useState(null);
-
-  useEffect(() => {
-    const load = async () => {
-      const database = await loadDatabaseFromCSV('/data/people.csv');
-      setDb(database);
-      const res = database.exec('SELECT * FROM people');
-      if (res.length > 0) {
-        setRows(res[0].values);
-      }
-    };
-    load();
-  }, []);
-
-  const handleSearch = (e) => {
-    const input = e.target.value;
-    setQuery(input);
-
-    if (db) {
-      const results = searchPeople(db, input);
-      setRows(results);
-    }
-  };
-
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Recherche dans la base de personnes</h1>
+    <Router>
+      <div className="content">
+        <Routes>
+          <Route path="/" element={<Accueil />} />
+          <Route path="/series" element={<SeriesFilterPage />} />
+          <Route path="/historique" element={<Historique />} />
+          <Route path="/recommandation" element={<Recommandation />} />
+          <Route path="/tendance" element={<Tendances />} />
+          <Route path="/connexion" element={<Connexion />} />
+          <Route path="/creationCompte" element={<CreationCompte />} />
 
-      <input
-        type="text"
-        value={query}
-        onChange={handleSearch}
-        placeholder="Ex: PHI"
-        style={{ padding: '0.5rem', width: '300px', fontSize: '1rem' }}
-      />
+          <Route path="/evaluation" element={<PrivateRoute><Evaluations /></PrivateRoute>} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
 
-      <table border="1" cellPadding="5" style={{ marginTop: '1rem' }}>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Email</th>
-            <th>Genre</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map(([id, first, last, email, gender]) => (
-            <tr key={id}>
-              <td>{id}</td>
-              <td>{first}</td>
-              <td>{last}</td>
-              <td>{email}</td>
-              <td>{gender}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
