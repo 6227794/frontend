@@ -10,6 +10,7 @@ import PrivateRoute from "./pages/PrivateRoute";
 import CreationCompte from "./pages/CreationCompte";
 import Page404 from "./pages/Page404";
 import Tendances from "./pages/Tendances";
+
 function App() {
   return (
     <Router>
