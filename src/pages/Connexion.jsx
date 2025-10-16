@@ -6,6 +6,10 @@ import Navbar from "./Navbar";
 
 export default function Connexion() {
 
+    const API_BASE_URL = 
+  (window._env_ && window._env_.API_BASE_URL)
+  || process.env.REACT_APP_API_BASE_URL
+  || 'http://10.10.2.134:8585' ;
     const [userData, setUserData] = useState({
         courriel: '',
         motDePasse: ''
@@ -24,7 +28,7 @@ export default function Connexion() {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:8585/auth/login", {
+            const response = await axios.post(`${API_BASE_URL}/auth/login`, {
                 email: userData.courriel,
                 password: userData.motDePasse
             });

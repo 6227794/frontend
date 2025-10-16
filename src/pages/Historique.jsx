@@ -13,7 +13,10 @@ import superaction from "../assets/images/superaction.jpg";
 import Navbar from "./Navbar";
 
 export default function HistoriquePage() {
-  const API = "http://localhost:8585/persons";
+  const API =
+  (window._env_ && window._env_.API_BASE_URL)
+  || process.env.REACT_APP_API_BASE_URL
+  || 'http://10.10.2.134:8585' ;
 
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -36,7 +39,7 @@ export default function HistoriquePage() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get(API);
+        const res = await axios.get(`${API}/persons`);
         setUsers(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         setErrorMsg("Impossible de charger les utilisateurs.");
@@ -47,7 +50,7 @@ export default function HistoriquePage() {
   // Chargement de l'historique d'un utilisateur sélectionné
   const loadHistory = async (id) => {
     try {
-      const res = await axios.get(`${API}/${id}/history`);
+      const res = await axios.get(`${API}/persons/${id}/history`);
       setHistory(Array.isArray(res.data) ? res.data : []);
       setSelectedUser(id);
     } catch (err) {

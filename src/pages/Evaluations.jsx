@@ -4,7 +4,12 @@ import "../css/Evaluations.css";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 export default function Evaluations() {
-  const userId = localStorage.getItem("id");
+
+const API_BASE_URL = 
+  (window._env_ && window._env_.API_BASE_URL)
+  || process.env.REACT_APP_API_BASE_URL
+  || 'http://10.10.2.134:8585' ;   
+const userId = localStorage.getItem("id");
   const userName = localStorage.getItem("name");
   const [ratings, setRatings] = useState([]);
   const [errorMsg, setErrorMsg] = useState("");
@@ -24,7 +29,7 @@ export default function Evaluations() {
           return;
         }
 
-        const res = await axios.get(`http://localhost:8585/ratings/user/${userId}`, {
+        const res = await axios.get(`${API_BASE_URL}/ratings/user/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

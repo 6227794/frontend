@@ -4,7 +4,11 @@ import "../css/Recommandation.css";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 export default function Recommandation() {
-  const API_BASE = "http://localhost:8585/persons";
+  const API_BASE = 
+  (window._env_ && window._env_.API_BASE_URL)
+  || process.env.REACT_APP_API_BASE_URL
+  || 'http://10.10.2.134:8585' ;
+
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedUser, setSelectedUser] = useState(null);
@@ -18,7 +22,7 @@ export default function Recommandation() {
       setLoadingUsers(true);
       setError("");
       try {
-        const res = await axios.get(`${API_BASE}`);
+        const res = await axios.get(`${API_BASE}/persons`);
         setUsers(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         setError("Impossible de charger la liste d'utilisateurs.");
@@ -36,7 +40,7 @@ export default function Recommandation() {
     setLoadingRecs(true);
     setError("");
     try {
-      const res = await axios.get(`${API_BASE}/${user.id}/recommendation`);
+      const res = await axios.get(`${API_BASE}/persons/${user.id}/recommendation`);
       setRecommendations(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       setError("Impossible de charger les recommandations.");

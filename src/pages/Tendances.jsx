@@ -4,6 +4,9 @@ import "../css/Tendances.css";
 import Navbar from "./Navbar";
 
 export default function Tendances() {
+	const API_BASE_URL =  (window._env_ && window._env_.API_BASE_URL)
+  || process.env.REACT_APP_API_BASE_URL
+  || 'http://10.10.2.134:8585' ;
     const userName = localStorage.getItem("name");
     const [trending, setTrending] = useState([]); 
     const [errorMsg, setErrorMsg] = useState("");
@@ -24,7 +27,7 @@ export default function Tendances() {
                     return;
                 }
 
-                const res = await axios.get("http://localhost:8585/series/trending", {
+                const res = await axios.get(`${API_BASE_URL}/series/trending`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

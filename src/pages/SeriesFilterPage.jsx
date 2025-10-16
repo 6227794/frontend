@@ -12,7 +12,9 @@ import hs from "../assets/images/hs.jpg";
 import superaction from "../assets/images/superaction.jpg";
 import Navbar from "./Navbar";
 export default function SeriesFilterPage() {
-  const API = "http://localhost:8585/series";
+  const API =  (window._env_ && window._env_.API_BASE_URL)
+  || process.env.REACT_APP_API_BASE_URL
+  || 'http://10.10.2.134:8585' ;
 
   const [series, setSeries] = useState([]);
   const [searchName, setSearchName] = useState("");
@@ -36,7 +38,7 @@ export default function SeriesFilterPage() {
   useEffect(() => {
     const fetchSeries = async () => {
       try {
-        const res = await axios.get(`${API}/search`);
+        const res = await axios.get(`${API}/series/search`);
         setSeries(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         setErrorMsg("Impossible de charger la liste des séries.");

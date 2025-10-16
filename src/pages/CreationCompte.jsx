@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 
 export default function CreationCompte() {
+const API_BASE_URL =   (window._env_ && window._env_.API_BASE_URL)
+  || process.env.REACT_APP_API_BASE_URL
+  || 'http://10.10.2.134:8585' ;
+
     const navigate = useNavigate();
 
     const [name, setName] = useState("");
@@ -23,7 +27,7 @@ export default function CreationCompte() {
         }
 
         try {
-            const res = await axios.post("http://localhost:8585/auth/register", {
+            const res = await axios.post(`${API_BASE_URL}/auth/register`, {
                 name,
                 email,
                 password,
